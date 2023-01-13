@@ -1,0 +1,15 @@
+const fetchBTCPrice = async () => {
+  const response = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
+  const data = await response.json();
+  return data.bitcoin.usd;
+};
+This function uses the fetch API to send a GET request to the CoinGecko API and retrieve the current price of Bitcoin in USD. It returns the value as a promise. You can use it like this:
+fetchBTCPrice().then(price => console.log(price))
+You can also use other library like axios, request-promise etc.
+const axios = require('axios');
+
+const fetchBTCPrice = async () => {
+  const response = await axios.get("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
+  return response.data.bitcoin.usd;
+};
+Please note that the above function will only work if you are running it in a web environment that supports the fetch API, or you have the required modules installed for axios, request-promise etc.
